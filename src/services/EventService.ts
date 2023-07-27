@@ -3,7 +3,7 @@ import type { AxiosInstance, AxiosResponse } from 'axios'
 import type { EventItem } from '@/type'
 
 const apiClient : AxiosInstance = axios.create({
-    baseURL: 'http://localhost:3004/',
+    baseURL: 'http://localhost:3004',
     withCredentials: false,
     headers:{
         Accept: 'application/json',
@@ -12,7 +12,14 @@ const apiClient : AxiosInstance = axios.create({
 })
 
 export default{
-    getEvent(): Promise<AxiosResponse<EventItem[]>>{
-        return apiClient.get<EventItem[]> ('/events')
+    // getEvent(): Promise<AxiosResponse<EventItem[]>>{
+    //     return apiClient.get<EventItem[]>('/events')
+    // },
+    getEvent(perPage: number, page: number): Promise<AxiosResponse<EventItem[]>> {
+        return apiClient.get<EventItem[]>('/events?_limit=' + perPage + '&_page=' + page)
+    },
+    getEventById(id: number): Promise<AxiosResponse<EventItem>>{
+        return apiClient.get<EventItem>('events/' + id.toString())
+
     }
 }
