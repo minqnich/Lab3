@@ -1,3 +1,4 @@
+import './assets/stye.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
