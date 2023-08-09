@@ -8,6 +8,7 @@ const { message } = storeToRefs(store)
 
 <template>
   <header class="max-h-screen leading-normal text-center ">
+    <h1> Nichakamol Sanghong </h1>
     <div id="flashMessage" v-if="message"> 
       <h4 class="font-xl">{{  message  }}</h4>
     </div>
